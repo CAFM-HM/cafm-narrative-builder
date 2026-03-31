@@ -15,9 +15,15 @@ body{font-family:'DM Sans',sans-serif;background:#F7F5F0;color:#2D2D2D;min-heigh
 .mode-sw{display:flex;gap:4px}
 .mode-btn{padding:8px 18px;border-radius:6px;border:1.5px solid rgba(255,255,255,0.3);background:transparent;color:rgba(255,255,255,0.7);font-family:'DM Sans',sans-serif;font-weight:600;font-size:13px;cursor:pointer}
 .mode-btn.a{background:rgba(255,255,255,0.15);color:#fff;border-color:rgba(255,255,255,0.5)}
+.user-bar{display:flex;align-items:center;gap:10px;margin-top:4px}
+.user-name{color:rgba(255,255,255,0.8);font-size:12px}
+.sign-out-btn{padding:3px 10px;border-radius:4px;border:1px solid rgba(255,255,255,0.3);background:transparent;color:rgba(255,255,255,0.6);font-size:11px;cursor:pointer;font-family:'DM Sans',sans-serif}
 .ct{max-width:900px;margin:0 auto;padding:20px 16px 80px}
-
-/* Shared */
+.auth-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;text-align:center;padding:40px 20px}
+.auth-title{font-family:'Libre Baskerville',serif;font-size:24px;color:#1B3A5C;margin-bottom:8px}
+.auth-sub{color:#888;font-size:14px;margin-bottom:32px;max-width:400px;line-height:1.6}
+.google-btn{display:flex;align-items:center;gap:12px;padding:14px 32px;border-radius:8px;border:1.5px solid #ddd;background:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;color:#333;box-shadow:0 2px 8px rgba(0,0,0,0.08)}.google-btn:hover{background:#f8f8f8}
+.sync-note{margin-top:20px;font-size:11px;color:#999;font-style:italic}
 .card{background:#fff;border-radius:10px;padding:16px 20px;margin-bottom:16px;border:1px solid #e4e0d8;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
 .card-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px}
 .card-title{font-weight:700;color:#1B3A5C;font-size:13px;text-transform:uppercase;letter-spacing:1px}
@@ -29,8 +35,6 @@ body{font-family:'DM Sans',sans-serif;background:#F7F5F0;color:#2D2D2D;min-heigh
 .btn-red{background:#fff;color:#c44;border:1.5px solid #eaa}.btn-red:hover{background:#fef5f5}
 input,select{padding:8px 12px;border-radius:6px;border:1.5px solid #ddd;font-family:'DM Sans',sans-serif;font-size:14px;outline:none}
 input:focus,select:focus{border-color:#1B3A5C}
-
-/* Daily Tracker */
 .setup-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
 .setup-row input,.setup-row select{flex:1;min-width:120px}
 .date-nav{display:flex;gap:8px;align-items:center;justify-content:center;margin-bottom:16px}
@@ -39,7 +43,6 @@ input:focus,select:focus{border-color:#1B3A5C}
 .date-label{font-family:'Libre Baskerville',serif;font-weight:700;color:#1B3A5C;font-size:15px;min-width:180px;text-align:center}
 .roster-add{display:flex;gap:8px;margin-bottom:12px}
 .roster-add input{flex:1}
-
 .s-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #f0f0f0;flex-wrap:wrap}
 .s-row:last-child{border-bottom:none}
 .s-name{font-family:'Libre Baskerville',serif;font-weight:700;font-size:13px;color:#1B3A5C;min-width:130px;display:flex;align-items:center;gap:6px}
@@ -58,16 +61,17 @@ input:focus,select:focus{border-color:#1B3A5C}
 .s-avg{min-width:50px;text-align:center}
 .s-avg-num{font-family:'Libre Baskerville',serif;font-weight:700;font-size:18px;line-height:1}
 .s-avg-lbl{font-size:8px;color:#999;text-transform:uppercase;letter-spacing:0.5px}
-
 .avg-banner{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;padding:12px;background:#f9f8f5;border-radius:8px;margin-top:12px}
 .avg-item{text-align:center;min-width:70px}
 .avg-item-num{font-family:'Libre Baskerville',serif;font-weight:700;font-size:22px}
 .avg-item-lbl{font-size:9px;color:#999;text-transform:uppercase;letter-spacing:0.5px;font-weight:600}
-
 .export-row{display:flex;gap:8px;justify-content:flex-end;margin-top:12px;flex-wrap:wrap}
 .saved-note{font-size:11px;color:#2D6A4F;font-style:italic}
-
-/* Narrative Builder (same styles as v2) */
+.class-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
+.class-tab{padding:6px 14px;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;border:1.5px solid #ddd;background:#fff;color:#888;font-weight:500}
+.class-tab.a{border:2px solid #1B3A5C;background:#1B3A5C;color:#fff;font-weight:700}
+.class-add-btn{padding:6px 12px;border-radius:6px;border:1.5px dashed #ccc;background:transparent;color:#999;font-size:16px;cursor:pointer;font-weight:700}
+.class-rm-btn{padding:6px 10px;border-radius:6px;border:none;background:transparent;color:#c44;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif}
 .sb{background:#fff;border-radius:10px;padding:16px 20px;margin-bottom:16px;border:1px solid #e4e0d8;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
 .st-toggle{display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none}
 .st-l{font-weight:600;color:#1B3A5C;font-size:14px}.st-a{color:#999;font-size:12px}
@@ -116,8 +120,6 @@ input:focus,select:focus{border-color:#1B3A5C}
 .cmt-hint{font-size:11px;color:#999;margin-top:4px;font-style:italic}
 .pdw{margin-top:20px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .pdb{padding:14px 32px;border-radius:8px;border:none;background:#1B3A5C;color:#fff;font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;cursor:pointer;box-shadow:0 2px 8px rgba(27,58,92,0.3)}.pdb:hover{background:#264D73}
-
-/* Modal */
 .mo{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.45);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px}
 .mm{background:#fff;border-radius:12px;max-width:520px;width:100%;max-height:80vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
 .mh{padding:16px 20px 12px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:#fff;border-radius:12px 12px 0 0;z-index:1}
@@ -128,318 +130,134 @@ input:focus,select:focus{border-color:#1B3A5C}
 .lr{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid #f0f0f0}.lr:last-child{border-bottom:none}
 .lb{min-width:36px;height:36px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;font-family:'DM Sans',sans-serif;flex-shrink:0}
 .lc{flex:1}.ll{font-weight:700;font-size:12px;margin-bottom:2px}.lt{font-size:12px;color:#555;line-height:1.5}
-
-.today-short{display:none}
-
+.loading-spinner{text-align:center;padding:40px;color:#999;font-style:italic}
 @media(max-width:700px){
-  .hd-in{flex-direction:column;align-items:flex-start}
-  .ct{padding:12px 8px 80px}
-  .card{padding:12px;overflow:hidden}
-  .setup-row{flex-direction:column}
-  .setup-row input,.setup-row select{min-width:100%}
-  .date-nav{gap:6px}
-  .date-label{font-size:13px;min-width:140px}
-
-  /* Stack each student vertically */
-  .s-row{flex-direction:column;align-items:stretch;gap:8px;padding:14px 0}
-  .s-name{min-width:auto;font-size:15px;width:100%;margin-bottom:2px}
-  .s-virtues{width:100%;flex-direction:column;gap:6px}
-  .s-vgroup{width:100%;flex-direction:row;align-items:center;gap:8px;min-width:auto}
-  .s-v-label{font-size:10px;font-weight:700;min-width:24px;text-align:center}
-  .s-vbtns{display:flex;gap:6px;flex:1;justify-content:flex-start}
-  .vb{width:36px;height:36px;font-size:14px;border-radius:8px}
-  .s-avg{width:100%;text-align:left;display:flex;align-items:center;gap:8px;padding-top:6px;border-top:1px dashed #e4e0d8;margin-top:2px}
-  .s-avg-num{font-size:16px}
-  .s-avg-lbl{font-size:9px}
-  .avg-banner{gap:8px;padding:10px}
-  .avg-item{min-width:55px}
-  .avg-item-num{font-size:18px}
-  .export-row{justify-content:center}
-  .roster-add{flex-direction:row}
-  .roster-add input{min-width:0}
-
-  /* Narrative builder mobile */
-  .sr{flex-direction:column}
-  .ni{min-width:100%}
-  .vsr{flex-direction:column;align-items:flex-start;gap:6px}
-  .vn{min-width:auto}
-  .vps{gap:4px}
-  .vp{width:34px;height:34px;font-size:13px}
-  .so{font-size:12px;padding:8px 12px}
-  .nb{margin:0 12px 16px;padding:14px}
-  .cmt-section{padding:0 12px 16px}
-  .mode-btn{padding:7px 14px;font-size:12px}
-  .s-header{display:none!important}
-  .today-full{display:none}
-  .today-short{display:inline}
+.hd-in{flex-direction:column;align-items:flex-start}
+.ct{padding:12px 8px 80px}
+.card{padding:12px;overflow:hidden}
+.setup-row{flex-direction:column}
+.setup-row input,.setup-row select{min-width:100%}
+.date-nav{gap:6px}
+.date-label{font-size:13px;min-width:140px}
+.s-row{flex-direction:column;align-items:stretch;gap:8px;padding:14px 0}
+.s-name{min-width:auto;font-size:15px;width:100%;margin-bottom:2px}
+.s-virtues{width:100%;flex-direction:column;gap:6px}
+.s-vgroup{width:100%;flex-direction:row;align-items:center;gap:8px;min-width:auto}
+.s-v-label{font-size:10px;font-weight:700;min-width:24px;text-align:center}
+.s-vbtns{display:flex;gap:6px;flex:1;justify-content:flex-start}
+.vb{width:36px;height:36px;font-size:14px;border-radius:8px}
+.s-avg{width:100%;text-align:left;display:flex;align-items:center;gap:8px;padding-top:6px;border-top:1px dashed #e4e0d8;margin-top:2px}
+.s-avg-num{font-size:16px}.s-avg-lbl{font-size:9px}
+.avg-banner{gap:8px;padding:10px}.avg-item{min-width:55px}.avg-item-num{font-size:18px}
+.export-row{justify-content:center}
+.roster-add{flex-direction:row}.roster-add input{min-width:0}
+.sr{flex-direction:column}.ni{min-width:100%}
+.vsr{flex-direction:column;align-items:flex-start;gap:6px}.vn{min-width:auto}
+.vps{gap:4px}.vp{width:34px;height:34px;font-size:13px}
+.so{font-size:12px;padding:8px 12px}
+.nb{margin:0 12px 16px;padding:14px}
+.cmt-section{padding:0 12px 16px}
+.mode-btn{padding:7px 14px;font-size:12px}
+.s-header{display:none!important}
 }
 </style>
 </head>
 <body>
-
-<!-- Modal -->
 <div id="modal" class="mo" style="display:none" onclick="if(event.target===this)closeM()"><div class="mm"><div class="mh"><div class="mt-title" id="mTitle"></div><button class="mx" onclick="closeM()">&times;</button></div><div class="mb-body" id="mBody"></div></div></div>
-
-<!-- Header -->
 <div class="hd"><div class="hd-in">
-<div><div class="sl">Chesterton Academy of the Florida Martyrs</div><div class="at">Participation Tool</div></div>
-<div class="mode-sw">
+<div>
+<div class="sl">Chesterton Academy of the Florida Martyrs</div>
+<div class="at">Participation Tool</div>
+<div class="user-bar" id="userBar" style="display:none"><span class="user-name" id="userNameDisplay"></span><button class="sign-out-btn" onclick="signOut()">Sign Out</button></div>
+</div>
+<div class="mode-sw" id="modeSw" style="display:none">
 <button class="mode-btn a" id="mDaily" onclick="switchMode('daily')">Daily Tracker</button>
 <button class="mode-btn" id="mNarr" onclick="switchMode('narrative')">Narrative Builder</button>
 </div>
 </div></div>
-
-<!-- Content -->
 <div class="ct">
-<div id="dailyView"></div>
+<div id="authView"><div class="auth-screen">
+<div class="auth-title">Welcome</div>
+<div class="auth-sub">Sign in with your Google account to access the Participation Tool. Your data syncs across all your devices.</div>
+<button class="google-btn" onclick="googleSignIn()"><svg width="20" height="20" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Sign in with Google</button>
+<div class="sync-note">Your data syncs securely across all devices.</div>
+</div></div>
+<div id="dailyView" style="display:none"></div>
 <div id="narrView" style="display:none"></div>
 </div>
-
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 <script>
-// ============================================================
-// SHARED
-// ============================================================
-const esc=(s)=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+firebase.initializeApp({apiKey:"AIzaSyBhPThGT9VOLFPePOFs2Ky0SWkLgh3BOP0",authDomain:"cafm-participation.firebaseapp.com",projectId:"cafm-participation",storageBucket:"cafm-participation.firebasestorage.app",messagingSenderId:"849036044326",appId:"1:849036044326:web:798a5535971cbb1d039ee7"});
+const auth=firebase.auth(),db=firebase.firestore();
+let currentUser=null,unsubscribe=null;
+
+function googleSignIn(){const p=new firebase.auth.GoogleAuthProvider();auth.signInWithPopup(p).catch(e=>{if(e.code==='auth/popup-blocked')auth.signInWithRedirect(p);else alert('Sign in failed: '+e.message)})}
+function signOut(){auth.signOut()}
+auth.onAuthStateChanged(user=>{currentUser=user;if(user){$('authView').style.display='none';$('modeSw').style.display='flex';$('userBar').style.display='flex';$('userNameDisplay').textContent=user.displayName||user.email;loadTeacherData()}else{$('authView').style.display='block';$('dailyView').style.display='none';$('narrView').style.display='none';$('modeSw').style.display='none';$('userBar').style.display='none';if(unsubscribe){unsubscribe();unsubscribe=null}}});
+
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 const $=id=>document.getElementById(id);
 let mode='daily';
+function switchMode(m){mode=m;$('mDaily').className='mode-btn'+(m==='daily'?' a':'');$('mNarr').className='mode-btn'+(m==='narrative'?' a':'');$('dailyView').style.display=m==='daily'?'block':'none';$('narrView').style.display=m==='narrative'?'block':'none';if(m==='narrative')narrLoad()}
 
-function switchMode(m){
-  mode=m;
-  $('mDaily').className='mode-btn'+(m==='daily'?' a':'');
-  $('mNarr').className='mode-btn'+(m==='narrative'?' a':'');
-  $('dailyView').style.display=m==='daily'?'block':'none';
-  $('narrView').style.display=m==='narrative'?'block':'none';
-  if(m==='narrative')narrLoad();
-}
-
-// ============================================================
-// DAILY TRACKER
-// ============================================================
 const VIRTUES=['D','A','C','I'];
 const V_FULL={D:'Discipline',A:'Attention',C:'Charity',I:'Inquiry'};
 const V_COLOR={D:'#1B3A5C',A:'#2D6A4F',C:'#C44D28',I:'#B8860B'};
 const SL_D={5:{l:"Excellent",c:"#2D6A4F"},4:{l:"Good",c:"#4A7C59"},3:{l:"Fair",c:"#B8860B"},2:{l:"Poor",c:"#C44D28"},1:{l:"Failing",c:"#A03030"}};
 
-let dState={
-  teacher:'',cls:'',quarter:'Q4',
-  roster:[],
-  scores:{}, // key: "YYYY-MM-DD" => { studentName: {D:n,A:n,C:n,I:n} }
-  date:todayStr()
-};
+let dState={teacher:'',cls:'',quarter:'Q4',roster:[],scores:{},date:todayStr(),classId:null,classes:[]};
+let _saveTimer=null,_dirty=false;
 
 function todayStr(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
 function fmtDate(s){const[y,m,d]=s.split('-');const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return months[+m-1]+' '+parseInt(d)+', '+y}
 function dayOfWeek(s){const d=new Date(s+'T12:00:00');return['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][d.getDay()]}
 
-function dSave(){
-  try{localStorage.setItem('cafm_daily',JSON.stringify(dState))}catch(e){}
-}
-function dLoadState(){
-  try{const s=localStorage.getItem('cafm_daily');if(s){const p=JSON.parse(s);Object.assign(dState,p);dState.date=dState.date||todayStr()}}catch(e){}
-}
+function docRef(){if(!currentUser||!dState.classId)return null;return db.collection('teachers').doc(currentUser.uid).collection('classes').doc(dState.classId)}
 
-function shiftDate(n){
-  const d=new Date(dState.date+'T12:00:00');
-  d.setDate(d.getDate()+n);
-  dState.date=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
-  dSave();renderDaily();
-}
+function saveToFirestore(){const ref=docRef();if(!ref)return;ref.set({teacher:dState.teacher,cls:dState.cls,quarter:dState.quarter,roster:dState.roster,scores:dState.scores,updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true}).then(()=>{_dirty=false;const el=$('syncStatus');if(el){el.textContent='Synced \u2713';el.style.color='#2D6A4F';setTimeout(()=>{if(el)el.textContent='Auto-synced to cloud'},2000)}}).catch(e=>console.error('Save failed:',e))}
 
-function addStudent(){
-  const inp=$('rosterInput');
-  const name=inp.value.trim();
-  if(!name||dState.roster.includes(name))return;
-  dState.roster.push(name);
-  inp.value='';
-  dState.roster.sort((a,b)=>a.split(' ').pop().localeCompare(b.split(' ').pop()));
-  dSave();renderDaily();
-}
+function debounceSave(){_dirty=true;clearTimeout(_saveTimer);_saveTimer=setTimeout(saveToFirestore,1500)}
 
-function rmStudent(name){
-  if(!confirm('Remove '+name+' from roster? Their score history will be kept.')){return}
-  dState.roster=dState.roster.filter(n=>n!==name);
-  dSave();renderDaily();
-}
+function loadTeacherData(){if(!currentUser)return;db.collection('teachers').doc(currentUser.uid).collection('classes').get().then(snap=>{dState.classes=[];snap.forEach(doc=>{dState.classes.push({id:doc.id,name:doc.data().cls||doc.id})});if(dState.classes.length>0){dState.classId=dState.classes[0].id;loadClassData(dState.classId)}else{addClass('Class 1')}})}
 
-function setDScore(student,virtue,val){
-  const dt=dState.date;
-  if(!dState.scores[dt])dState.scores[dt]={};
-  if(!dState.scores[dt][student])dState.scores[dt][student]={};
-  const cur=dState.scores[dt][student][virtue];
-  if(cur===val){delete dState.scores[dt][student][virtue]}
-  else{dState.scores[dt][student][virtue]=val}
-  dSave();
-  // Targeted update
-  const btns=document.querySelectorAll('[data-ds="'+student+'"][data-dv="'+virtue+'"]');
-  const newVal=dState.scores[dt]?.[student]?.[virtue]||null;
-  btns.forEach(b=>{const n=+b.dataset.dn;b.className='vb'+(newVal===n?' s'+n:'')});
-  updateStudentAvg(student);
-  updateClassAvg();
-}
+function addClass(name){if(!currentUser)return;const ref=db.collection('teachers').doc(currentUser.uid).collection('classes').doc();const id=ref.id;ref.set({cls:name||'New Class',teacher:dState.teacher,quarter:dState.quarter,roster:[],scores:{},updatedAt:firebase.firestore.FieldValue.serverTimestamp()}).then(()=>{dState.classes.push({id,name:name||'New Class'});dState.classId=id;loadClassData(id)})}
 
-function getStudentQAvg(student){
-  let totals={D:[],A:[],C:[],I:[]};
-  for(const dt in dState.scores){
-    const s=dState.scores[dt][student];
-    if(!s)continue;
-    VIRTUES.forEach(v=>{if(s[v])totals[v].push(s[v])});
-  }
-  let overall=[];
-  const avgs={};
-  VIRTUES.forEach(v=>{
-    if(totals[v].length){const a=totals[v].reduce((a,b)=>a+b,0)/totals[v].length;avgs[v]=a;overall.push(a)}
-    else{avgs[v]=null}
-  });
-  avgs.overall=overall.length===4?overall.reduce((a,b)=>a+b,0)/4:null;
-  avgs.days=Object.keys(dState.scores).filter(dt=>dState.scores[dt][student]&&VIRTUES.some(v=>dState.scores[dt][student][v])).length;
-  return avgs;
-}
+function removeClass(){if(!currentUser||!dState.classId||dState.classes.length<=1)return;if(!confirm('Delete this class and all its scores? This cannot be undone.'))return;db.collection('teachers').doc(currentUser.uid).collection('classes').doc(dState.classId).delete().then(()=>{dState.classes=dState.classes.filter(c=>c.id!==dState.classId);dState.classId=dState.classes[0]?.id||null;if(dState.classId)loadClassData(dState.classId)})}
 
-function updateStudentAvg(student){
-  const el=$('savg_'+CSS.escape(student));
-  if(!el)return;
-  const a=getStudentQAvg(student);
-  if(a.overall!==null){
-    const d=SL_D[Math.round(a.overall)];
-    el.innerHTML='<div class="s-avg-num" style="color:'+d.c+'">'+a.overall.toFixed(1)+'</div><div class="s-avg-lbl">'+a.days+' day'+(a.days===1?'':'s')+'</div>';
-  } else {
-    el.innerHTML='<div class="s-avg-num" style="color:#ccc">&mdash;</div><div class="s-avg-lbl">no scores</div>';
-  }
-}
+function switchClass(id){if(id===dState.classId)return;if(_dirty)saveToFirestore();dState.classId=id;loadClassData(id)}
 
-function updateClassAvg(){
-  const el=$('classAvg');if(!el)return;
-  if(!dState.roster.length){el.innerHTML='';return}
-  let vTotals={D:[],A:[],C:[],I:[]};
-  dState.roster.forEach(st=>{
-    const a=getStudentQAvg(st);
-    VIRTUES.forEach(v=>{if(a[v]!==null)vTotals[v].push(a[v])});
-  });
-  let h='';
-  VIRTUES.forEach(v=>{
-    const avg=vTotals[v].length?vTotals[v].reduce((a,b)=>a+b,0)/vTotals[v].length:null;
-    const col=avg?SL_D[Math.round(avg)]?.c||'#999':'#ccc';
-    h+='<div class="avg-item"><div class="avg-item-num" style="color:'+col+'">'+(avg!==null?avg.toFixed(1):'&mdash;')+'</div><div class="avg-item-lbl">'+V_FULL[v]+'</div></div>';
-  });
-  const allAvgs=VIRTUES.map(v=>vTotals[v].length?vTotals[v].reduce((a,b)=>a+b,0)/vTotals[v].length:null).filter(x=>x!==null);
-  const ov=allAvgs.length===4?allAvgs.reduce((a,b)=>a+b,0)/4:null;
-  const ovCol=ov?SL_D[Math.round(ov)]?.c||'#999':'#ccc';
-  h+='<div class="avg-item"><div class="avg-item-num" style="color:'+ovCol+'">'+(ov!==null?ov.toFixed(1):'&mdash;')+'</div><div class="avg-item-lbl">Overall</div></div>';
-  el.innerHTML=h;
-}
+function loadClassData(classId){if(unsubscribe){unsubscribe();unsubscribe=null}$('dailyView').innerHTML='<div class="loading-spinner">Loading...</div>';unsubscribe=db.collection('teachers').doc(currentUser.uid).collection('classes').doc(classId).onSnapshot(doc=>{if(doc.exists){const d=doc.data();dState.teacher=d.teacher||'';dState.cls=d.cls||'';dState.quarter=d.quarter||'Q4';dState.roster=d.roster||[];dState.scores=d.scores||{};const ci=dState.classes.findIndex(c=>c.id===classId);if(ci>=0)dState.classes[ci].name=dState.cls}switchMode('daily');renderDaily()})}
 
-function exportCSV(){
-  const dates=Object.keys(dState.scores).sort();
-  if(!dates.length){alert('No scores recorded yet.');return}
-  let rows=[['Student','Date','Discipline','Attention','Charity','Inquiry']];
-  dState.roster.forEach(st=>{
-    dates.forEach(dt=>{
-      const s=dState.scores[dt]?.[st];
-      if(s&&VIRTUES.some(v=>s[v])){
-        rows.push([st,dt,s.D||'',s.A||'',s.C||'',s.I||'']);
-      }
-    });
-  });
-  const csv=rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n');
-  const blob=new Blob([csv],{type:'text/csv'});
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  a.download='CAFM_Participation_'+(dState.cls||'class').replace(/\s+/g,'_')+'_'+dState.quarter+'.csv';
-  a.click();
-}
+function promptAddClass(){const name=prompt('Class name (e.g. Literature, Theology):');if(name&&name.trim())addClass(name.trim())}
+function shiftDate(n){const d=new Date(dState.date+'T12:00:00');d.setDate(d.getDate()+n);dState.date=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');renderDaily()}
 
-function clearAllData(){
-  if(!confirm('This will delete ALL participation data from this browser. This cannot be undone. Are you sure?'))return;
-  if(!confirm('Really? All roster data and all scores will be permanently deleted.'))return;
-  localStorage.removeItem('cafm_daily');
-  dState={teacher:'',cls:'',quarter:'Q4',roster:[],scores:{},date:todayStr()};
-  renderDaily();
-}
+function addStudent(){const inp=$('rosterInput');const name=inp.value.trim();if(!name||dState.roster.includes(name))return;dState.roster.push(name);inp.value='';dState.roster.sort((a,b)=>a.split(' ').pop().localeCompare(b.split(' ').pop()));debounceSave();renderDaily()}
+function rmStudent(name){if(!confirm('Remove '+name+'?'))return;dState.roster=dState.roster.filter(n=>n!==name);debounceSave();renderDaily()}
 
-function renderDaily(){
-  const dt=dState.date;
-  const dayScores=dState.scores[dt]||{};
-  let h='';
+function setDScore(student,virtue,val){const dt=dState.date;if(!dState.scores[dt])dState.scores[dt]={};if(!dState.scores[dt][student])dState.scores[dt][student]={};const cur=dState.scores[dt][student][virtue];if(cur===val){delete dState.scores[dt][student][virtue]}else{dState.scores[dt][student][virtue]=val}debounceSave();const btns=document.querySelectorAll('[data-ds="'+student+'"][data-dv="'+virtue+'"]');const nv=dState.scores[dt]?.[student]?.[virtue]||null;btns.forEach(b=>{const n=+b.dataset.dn;b.className='vb'+(nv===n?' s'+n:'')});updateStudentAvg(student);updateClassAvg()}
 
-  // Setup
-  h+='<div class="card"><div class="setup-row">';
-  h+='<input id="dTeacher" placeholder="Teacher Name" value="'+esc(dState.teacher)+'" oninput="dState.teacher=this.value;dSave()">';
-  h+='<input id="dClass" placeholder="Class Name" value="'+esc(dState.cls)+'" oninput="dState.cls=this.value;dSave()">';
-  h+='<select id="dQuarter" onchange="dState.quarter=this.value;dSave()">';
-  ['Q1','Q2','Q3','Q4'].forEach(q=>{h+='<option'+(dState.quarter===q?' selected':'')+'>'+q+'</option>'});
-  h+='</select></div></div>';
+function getStudentQAvg(student){let totals={D:[],A:[],C:[],I:[]};for(const dt in dState.scores){const s=dState.scores[dt][student];if(!s)continue;VIRTUES.forEach(v=>{if(s[v])totals[v].push(s[v])})}let overall=[];const avgs={};VIRTUES.forEach(v=>{if(totals[v].length){const a=totals[v].reduce((a,b)=>a+b,0)/totals[v].length;avgs[v]=a;overall.push(a)}else{avgs[v]=null}});avgs.overall=overall.length===4?overall.reduce((a,b)=>a+b,0)/4:null;avgs.days=Object.keys(dState.scores).filter(dt=>dState.scores[dt][student]&&VIRTUES.some(v=>dState.scores[dt][student][v])).length;return avgs}
 
-  // Date nav
-  h+='<div class="date-nav">';
-  h+='<button onclick="shiftDate(-1)">&larr;</button>';
-  h+='<div><div class="date-label">'+fmtDate(dt)+'</div><div style="text-align:center;font-size:11px;color:#999">'+dayOfWeek(dt)+'</div></div>';
-  h+='<button onclick="shiftDate(1)">&rarr;</button>';
-  h+='<button class="btn btn-sm btn-outline today-btn" style="margin-left:8px" onclick="dState.date=todayStr();dSave();renderDaily()"><span class="today-full">Today</span><span class="today-short">T</span></button>';
-  h+='</div>';
+function updateStudentAvg(student){const el=$('savg_'+CSS.escape(student));if(!el)return;const a=getStudentQAvg(student);if(a.overall!==null){const d=SL_D[Math.round(a.overall)];el.innerHTML='<div class="s-avg-num" style="color:'+d.c+'">'+a.overall.toFixed(1)+'</div><div class="s-avg-lbl">'+a.days+' day'+(a.days===1?'':'s')+'</div>'}else{el.innerHTML='<div class="s-avg-num" style="color:#ccc">&mdash;</div><div class="s-avg-lbl">no scores</div>'}}
 
-  // Roster
-  h+='<div class="card">';
-  h+='<div class="card-hd"><span class="card-title">Students ('+dState.roster.length+')</span></div>';
-  h+='<div class="roster-add"><input id="rosterInput" placeholder="Add student name..." onkeydown="if(event.key===\'Enter\')addStudent()"><button class="btn btn-sm btn-navy" onclick="addStudent()">Add</button></div>';
+function updateClassAvg(){const el=$('classAvg');if(!el)return;if(!dState.roster.length){el.innerHTML='';return}let vT={D:[],A:[],C:[],I:[]};dState.roster.forEach(st=>{const a=getStudentQAvg(st);VIRTUES.forEach(v=>{if(a[v]!==null)vT[v].push(a[v])})});let h='';VIRTUES.forEach(v=>{const avg=vT[v].length?vT[v].reduce((a,b)=>a+b,0)/vT[v].length:null;const col=avg?SL_D[Math.round(avg)]?.c||'#999':'#ccc';h+='<div class="avg-item"><div class="avg-item-num" style="color:'+col+'">'+(avg!==null?avg.toFixed(1):'&mdash;')+'</div><div class="avg-item-lbl">'+V_FULL[v]+'</div></div>'});const allA=VIRTUES.map(v=>vT[v].length?vT[v].reduce((a,b)=>a+b,0)/vT[v].length:null).filter(x=>x!==null);const ov=allA.length===4?allA.reduce((a,b)=>a+b,0)/4:null;const ovC=ov?SL_D[Math.round(ov)]?.c||'#999':'#ccc';h+='<div class="avg-item"><div class="avg-item-num" style="color:'+ovC+'">'+(ov!==null?ov.toFixed(1):'&mdash;')+'</div><div class="avg-item-lbl">Overall</div></div>';el.innerHTML=h}
 
-  if(dState.roster.length){
-    // Header (hidden on mobile since rows stack vertically)
-    h+='<div class="s-row s-header" style="border-bottom:2px solid #e4e0d8;padding-bottom:6px">';
-    h+='<div class="s-name" style="color:#999;font-family:\'DM Sans\',sans-serif;font-weight:600;font-size:11px">STUDENT</div>';
-    h+='<div class="s-virtues">';
-    VIRTUES.forEach(v=>{h+='<div class="s-vgroup"><div class="s-v-label" style="color:'+V_COLOR[v]+'">'+V_FULL[v]+'</div></div>'});
-    h+='</div>';
-    h+='<div class="s-avg"><div class="s-avg-lbl">Q AVG</div></div>';
-    h+='</div>';
+function exportCSV(){const dates=Object.keys(dState.scores).sort();if(!dates.length){alert('No scores yet.');return}let rows=[['Student','Date','Discipline','Attention','Charity','Inquiry']];dState.roster.forEach(st=>{dates.forEach(dt=>{const s=dState.scores[dt]?.[st];if(s&&VIRTUES.some(v=>s[v])){rows.push([st,dt,s.D||'',s.A||'',s.C||'',s.I||''])}})});const csv=rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n');const blob=new Blob([csv],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='CAFM_'+(dState.cls||'class').replace(/\s+/g,'_')+'_'+dState.quarter+'.csv';a.click()}
 
-    dState.roster.forEach(st=>{
-      const ss=dayScores[st]||{};
-      h+='<div class="s-row">';
-      h+='<div class="s-name"><button class="s-rm" onclick="rmStudent(\''+esc(st.replace(/'/g,"\\'"))+'\')">&times;</button>'+esc(st)+'</div>';
-      h+='<div class="s-virtues">';
-      VIRTUES.forEach(v=>{
-        h+='<div class="s-vgroup"><div class="s-v-label">'+v+'</div><div class="s-vbtns">';
-        [1,2,3,4,5].forEach(n=>{
-          h+='<button class="vb'+(ss[v]===n?' s'+n:'')+'" data-ds="'+esc(st)+'" data-dv="'+v+'" data-dn="'+n+'" onclick="setDScore(\''+esc(st.replace(/'/g,"\\'"))+'\',\''+v+'\','+n+')">'+n+'</button>';
-        });
-        h+='</div></div>';
-      });
-      h+='</div>';
-      // Q avg
-      const a=getStudentQAvg(st);
-      const avgCol=a.overall!==null?SL_D[Math.round(a.overall)]?.c||'#999':'#ccc';
-      h+='<div class="s-avg" id="savg_'+esc(st)+'">';
-      if(a.overall!==null){
-        h+='<div class="s-avg-num" style="color:'+avgCol+'">'+a.overall.toFixed(1)+'</div><div class="s-avg-lbl">'+a.days+' day'+(a.days===1?'':'s')+'</div>';
-      } else {
-        h+='<div class="s-avg-num" style="color:#ccc">&mdash;</div><div class="s-avg-lbl">no scores</div>';
-      }
-      h+='</div>';
-      h+='</div>';
-    });
+function emailData(){const dates=Object.keys(dState.scores).sort();if(!dates.length){alert('No scores yet.');return}const t=dState.teacher||'Teacher',cls=dState.cls||'Class',q=dState.quarter;let body=t+' — '+cls+' — '+q+'%0D%0A%0D%0A';dState.roster.forEach(st=>{let lines=[];dates.forEach(dt=>{const s=dState.scores[dt]?.[st];if(s&&VIRTUES.some(v=>s[v])){lines.push(dt+': D='+(s.D||'-')+' A='+(s.A||'-')+' C='+(s.C||'-')+' I='+(s.I||'-'))}});if(lines.length){const avg=getStudentQAvg(st);body+=st+(avg.overall!==null?' (Avg: '+avg.overall.toFixed(1)+')':'')+' %0D%0A';lines.forEach(l=>{body+='  '+l+'%0D%0A'});body+='%0D%0A'}});const subj=encodeURIComponent('CAFM Backup — '+cls+' — '+q+' — '+new Date().toLocaleDateString());window.location.href='mailto:?subject='+subj+'&body='+body}
 
-    // Class averages
-    h+='<div class="avg-banner" id="classAvg"></div>';
-  } else {
-    h+='<div style="text-align:center;padding:24px;color:#999;font-style:italic">Add students above to start tracking.</div>';
-  }
-
-  h+='</div>';
-
-  // Export / actions
-  h+='<div class="export-row">';
-  h+='<button class="btn btn-sm btn-outline" onclick="exportCSV()">Export CSV</button>';
-  h+='<button class="btn btn-sm btn-red" onclick="clearAllData()">Clear All Data</button>';
-  h+='<span class="saved-note">Auto-saved to this browser</span>';
-  h+='</div>';
-
-  $('dailyView').innerHTML=h;
-  updateClassAvg();
-}
-
-// ============================================================
-// NARRATIVE BUILDER (from optimized v2)
-// ============================================================
+function renderDaily(){const dt=dState.date;const dayScores=dState.scores[dt]||{};let h='';
+h+='<div class="class-tabs">';dState.classes.forEach(c=>{h+='<button class="class-tab'+(c.id===dState.classId?' a':'')+'" onclick="switchClass(\''+c.id+'\')">'+esc(c.name)+'</button>'});h+='<button class="class-add-btn" onclick="promptAddClass()">+</button>';if(dState.classes.length>1)h+='<button class="class-rm-btn" onclick="removeClass()">Remove class</button>';h+='</div>';
+h+='<div class="card"><div class="setup-row">';h+='<input id="dTeacher" placeholder="Teacher Name" value="'+esc(dState.teacher)+'" oninput="dState.teacher=this.value;debounceSave()">';h+='<input id="dClass" placeholder="Class Name" value="'+esc(dState.cls)+'" oninput="dState.cls=this.value;var ci=dState.classes.findIndex(c=>c.id===dState.classId);if(ci>=0)dState.classes[ci].name=this.value;debounceSave()">';h+='<select id="dQuarter" onchange="dState.quarter=this.value;debounceSave()">';['Q1','Q2','Q3','Q4'].forEach(q=>{h+='<option'+(dState.quarter===q?' selected':'')+'>'+q+'</option>'});h+='</select></div></div>';
+h+='<div class="date-nav"><button onclick="shiftDate(-1)">&larr;</button><div><div class="date-label">'+fmtDate(dt)+'</div><div style="text-align:center;font-size:11px;color:#999">'+dayOfWeek(dt)+'</div></div><button onclick="shiftDate(1)">&rarr;</button><button class="btn btn-sm btn-outline" style="margin-left:8px" onclick="dState.date=todayStr();renderDaily()">T</button></div>';
+h+='<div class="card"><div class="card-hd"><span class="card-title">Students ('+dState.roster.length+')</span></div><div class="roster-add"><input id="rosterInput" placeholder="Add student name..." onkeydown="if(event.key===\'Enter\')addStudent()"><button class="btn btn-sm btn-navy" onclick="addStudent()">Add</button></div>';
+if(dState.roster.length){h+='<div class="s-row s-header" style="border-bottom:2px solid #e4e0d8;padding-bottom:6px"><div class="s-name" style="color:#999;font-family:\'DM Sans\',sans-serif;font-weight:600;font-size:11px">STUDENT</div><div class="s-virtues">';VIRTUES.forEach(v=>{h+='<div class="s-vgroup"><div class="s-v-label" style="color:'+V_COLOR[v]+'">'+V_FULL[v]+'</div></div>'});h+='</div><div class="s-avg"><div class="s-avg-lbl">Q AVG</div></div></div>';
+dState.roster.forEach(st=>{const ss=dayScores[st]||{};h+='<div class="s-row"><div class="s-name"><button class="s-rm" onclick="rmStudent(\''+esc(st.replace(/'/g,"\\'"))+'\')">&times;</button>'+esc(st)+'</div><div class="s-virtues">';VIRTUES.forEach(v=>{h+='<div class="s-vgroup"><div class="s-v-label">'+v+'</div><div class="s-vbtns">';[1,2,3,4,5].forEach(n=>{h+='<button class="vb'+(ss[v]===n?' s'+n:'')+'" data-ds="'+esc(st)+'" data-dv="'+v+'" data-dn="'+n+'" onclick="setDScore(\''+esc(st.replace(/'/g,"\\'"))+'\',\''+v+'\','+n+')">'+n+'</button>'});h+='</div></div>'});h+='</div>';const a=getStudentQAvg(st);const ac=a.overall!==null?SL_D[Math.round(a.overall)]?.c||'#999':'#ccc';h+='<div class="s-avg" id="savg_'+esc(st)+'">';if(a.overall!==null){h+='<div class="s-avg-num" style="color:'+ac+'">'+a.overall.toFixed(1)+'</div><div class="s-avg-lbl">'+a.days+' day'+(a.days===1?'':'s')+'</div>'}else{h+='<div class="s-avg-num" style="color:#ccc">&mdash;</div><div class="s-avg-lbl">no scores</div>'}h+='</div></div>'});
+h+='<div class="avg-banner" id="classAvg"></div>'}else{h+='<div style="text-align:center;padding:24px;color:#999;font-style:italic">Add students above to start tracking.</div>'}h+='</div>';
+h+='<div class="export-row"><button class="btn btn-sm btn-outline" onclick="exportCSV()">Export CSV</button><button class="btn btn-sm btn-gold" onclick="emailData()">Email My Data</button><span class="saved-note" id="syncStatus">Auto-synced to cloud</span></div>';
+$('dailyView').innerHTML=h;updateClassAvg()}
 const SL={5:{l:"Excellent",c:"#2D6A4F",b:"#E8F0E8"},4:{l:"Good",c:"#4A7C59",b:"#EEF4E8"},3:{l:"Fair",c:"#B8860B",b:"#FFF8E1"},2:{l:"Poor",c:"#C44D28",b:"#FDE8D8"},1:{l:"Failing",c:"#A03030",b:"#F8D7DA"}};
 const VN=[{k:"discipline",l:"Discipline",d:"Preparation, focus, self-control",ic:"\u2696"},{k:"attention",l:"Attention",d:"Listening, presence, engagement",ic:"\uD83D\uDC42"},{k:"charity",l:"Charity",d:"Respect, impact on others, classroom culture",ic:"\u2665"},{k:"inquiry",l:"Inquiry",d:"Deep questions, curiosity, intellectual risk",ic:"\uD83D\uDD0D"}];
 const LG={discipline:{5:"Consistently prepared with all materials, stays focused, manages time with maturity. Ready when the bell rings. Needs no reminders.",4:"Regularly prepared and focused with only occasional lapses. Responds well to minor redirection. Reliably ready when class begins.",3:"Inconsistently prepared or focused. Sometimes on task but frequently needs reminders. May arrive without materials.",2:"Frequently unprepared or unfocused. Struggles to stay on task, requires regular redirection. Often not ready when class begins.",1:"Consistently unprepared. Does not respond to feedback about focus or readiness. Critical area of concern."},attention:{5:"Fully present during instruction at all times. Listens carefully during Socratic discussion, shared reading, and oral activities. Models attentive learning.",4:"Consistently attentive with only minor lapses. Stays engaged during discussion and oral activities throughout the period.",3:"Inconsistently attentive. Sometimes focused but often distracted, having side conversations, or mentally checked out.",2:"Frequently inattentive. Misses key content during discussion and reading. Needs constant redirection. Often zoned out or engaged in side conversations.",1:"Shows no effort to pay attention. Consistently disengaged during instruction and discussion. Does not respond to redirection."},charity:{5:"A net positive for the classroom. Treats every classmate with genuine charity. Builds others up in discussion, uses their voice to strengthen the learning environment, and makes the room safe for intellectual risk-taking.",4:"Consistently respectful and kind. Listens well during Socratic discussion. Does not disrupt or pull others off task. Contributes positively to the learning environment.",3:"Generally respectful but passive, or capable of strong engagement but inconsistent in how they affect the room. May occasionally contribute to off-task behavior without being the primary cause.",2:"Negatively affects the learning environment. May engage in side conversations that pull others off task, make remarks that derail discussion, or be dismissive toward classmates during group work.",1:"Consistently disruptive to the learning environment. Side conversations, off-task remarks, or unkind behavior are a pattern. Undermines the trust needed for Socratic learning. Requires immediate attention."},inquiry:{5:"Asks deep questions, takes intellectual risks, shows genuine curiosity and wonder. Goes beyond what is required. Willing to be wrong in pursuit of truth.",4:"Asks thoughtful questions, engages beyond the surface. Willing to share thinking during discussion even when unsure.",3:"Participates when prompted but rarely volunteers. Stays at the surface of the material. Does the reading but doesn\u2019t bring questions.",2:"Rarely asks questions or engages beyond the minimum. Shows little curiosity or initiative during discussion.",1:"Shows no interest in engaging with the material. Refuses to participate in discussion, narration, or oral activities."}};
@@ -560,8 +378,6 @@ w.document.close();setTimeout(()=>w.print(),600)}
 // ============================================================
 // INIT
 // ============================================================
-dLoadState();
-renderDaily();
 </script>
 </body>
 </html>
