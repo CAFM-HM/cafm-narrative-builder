@@ -131,27 +131,30 @@ input:focus,select:focus{border-color:#1B3A5C}
 
 @media(max-width:700px){
   .hd-in{flex-direction:column;align-items:flex-start}
-  .ct{padding:12px 10px 80px}
-  .card{padding:12px 14px}
+  .ct{padding:12px 8px 80px}
+  .card{padding:12px;overflow:hidden}
   .setup-row{flex-direction:column}
   .setup-row input,.setup-row select{min-width:100%}
   .date-nav{gap:6px}
   .date-label{font-size:13px;min-width:140px}
 
   /* Stack each student vertically */
-  .s-row{flex-direction:column;align-items:flex-start;gap:6px;padding:12px 0}
-  .s-name{min-width:auto;font-size:14px;width:100%}
-  .s-virtues{width:100%;justify-content:flex-start;gap:10px;flex-wrap:wrap}
-  .s-vgroup{flex:1;min-width:calc(50% - 8px)}
-  .s-v-label{font-size:9px}
-  .s-vbtns{gap:4px}
-  .vb{width:32px;height:32px;font-size:13px}
-  .s-avg{width:100%;text-align:left;display:flex;align-items:center;gap:8px;padding-top:4px;border-top:1px dashed #e4e0d8}
+  .s-row{flex-direction:column;align-items:stretch;gap:8px;padding:14px 0}
+  .s-name{min-width:auto;font-size:15px;width:100%;margin-bottom:2px}
+  .s-virtues{width:100%;flex-direction:column;gap:6px}
+  .s-vgroup{width:100%;flex-direction:row;align-items:center;gap:8px;min-width:auto}
+  .s-v-label{font-size:10px;font-weight:700;min-width:24px;text-align:center}
+  .s-vbtns{display:flex;gap:6px;flex:1;justify-content:flex-start}
+  .vb{width:36px;height:36px;font-size:14px;border-radius:8px}
+  .s-avg{width:100%;text-align:left;display:flex;align-items:center;gap:8px;padding-top:6px;border-top:1px dashed #e4e0d8;margin-top:2px}
   .s-avg-num{font-size:16px}
   .s-avg-lbl{font-size:9px}
-  .avg-banner{gap:10px;padding:10px}
+  .avg-banner{gap:8px;padding:10px}
+  .avg-item{min-width:55px}
   .avg-item-num{font-size:18px}
   .export-row{justify-content:center}
+  .roster-add{flex-direction:row}
+  .roster-add input{min-width:0}
 
   /* Narrative builder mobile */
   .sr{flex-direction:column}
