@@ -129,6 +129,8 @@ input:focus,select:focus{border-color:#1B3A5C}
 .lb{min-width:36px;height:36px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;font-family:'DM Sans',sans-serif;flex-shrink:0}
 .lc{flex:1}.ll{font-weight:700;font-size:12px;margin-bottom:2px}.lt{font-size:12px;color:#555;line-height:1.5}
 
+.today-short{display:none}
+
 @media(max-width:700px){
   .hd-in{flex-direction:column;align-items:flex-start}
   .ct{padding:12px 8px 80px}
@@ -168,6 +170,8 @@ input:focus,select:focus{border-color:#1B3A5C}
   .cmt-section{padding:0 12px 16px}
   .mode-btn{padding:7px 14px;font-size:12px}
   .s-header{display:none!important}
+  .today-full{display:none}
+  .today-short{display:inline}
 }
 </style>
 </head>
@@ -370,7 +374,7 @@ function renderDaily(){
   h+='<button onclick="shiftDate(-1)">&larr;</button>';
   h+='<div><div class="date-label">'+fmtDate(dt)+'</div><div style="text-align:center;font-size:11px;color:#999">'+dayOfWeek(dt)+'</div></div>';
   h+='<button onclick="shiftDate(1)">&rarr;</button>';
-  h+='<button class="btn btn-sm btn-outline" style="margin-left:8px" onclick="dState.date=todayStr();dSave();renderDaily()">Today</button>';
+  h+='<button class="btn btn-sm btn-outline today-btn" style="margin-left:8px" onclick="dState.date=todayStr();dSave();renderDaily()"><span class="today-full">Today</span><span class="today-short">T</span></button>';
   h+='</div>';
 
   // Roster
