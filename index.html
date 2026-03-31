@@ -60,6 +60,7 @@ input:focus,select:focus{border-color:#1B3A5C}
 .vb.s1{border-color:#A03030;background:#F8D7DA;color:#A03030}
 .s-avg{min-width:50px;text-align:center}
 .s-avg-num{font-family:'Libre Baskerville',serif;font-weight:700;font-size:18px;line-height:1}
+.s-avg-pct{font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;line-height:1;margin-top:2px}
 .s-avg-lbl{font-size:8px;color:#999;text-transform:uppercase;letter-spacing:0.5px}
 .avg-banner{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;padding:12px;background:#f9f8f5;border-radius:8px;margin-top:12px}
 .avg-item{text-align:center;min-width:70px}
@@ -226,7 +227,7 @@ function addClass(name){if(!currentUser)return;const ref=db.collection('teachers
 
 function removeClass(){if(!currentUser||!dState.classId||dState.classes.length<=1)return;if(!confirm('Delete this class and all its scores? This cannot be undone.'))return;db.collection('teachers').doc(currentUser.uid).collection('classes').doc(dState.classId).delete().then(()=>{dState.classes=dState.classes.filter(c=>c.id!==dState.classId);dState.classId=dState.classes[0]?.id||null;if(dState.classId)loadClassData(dState.classId)})}
 
-function switchClass(id){if(id===dState.classId)return;if(_dirty)saveToFirestore();dState.classId=id;loadClassData(id)}
+function switchClass(id){if(id===dState.classId)return;if(_dirty)saveToFirestore();dState.classId=id;nS=[nMk(1)];nci=0;loadClassData(id)}
 
 function loadClassData(classId){if(unsubscribe){unsubscribe();unsubscribe=null}$('dailyView').innerHTML='<div class="loading-spinner">Loading...</div>';unsubscribe=db.collection('teachers').doc(currentUser.uid).collection('classes').doc(classId).onSnapshot(doc=>{if(doc.exists){const d=doc.data();dState.teacher=d.teacher||'';dState.cls=d.cls||'';dState.quarter=d.quarter||'Q4';dState.roster=d.roster||[];dState.scores=d.scores||{};const ci=dState.classes.findIndex(c=>c.id===classId);if(ci>=0)dState.classes[ci].name=dState.cls}switchMode('daily');renderDaily()})}
 
@@ -240,7 +241,10 @@ function setDScore(student,virtue,val){const dt=dState.date;if(!dState.scores[dt
 
 function getStudentQAvg(student){let totals={D:[],A:[],C:[],I:[]};for(const dt in dState.scores){const s=dState.scores[dt][student];if(!s)continue;VIRTUES.forEach(v=>{if(s[v])totals[v].push(s[v])})}let overall=[];const avgs={};VIRTUES.forEach(v=>{if(totals[v].length){const a=totals[v].reduce((a,b)=>a+b,0)/totals[v].length;avgs[v]=a;overall.push(a)}else{avgs[v]=null}});avgs.overall=overall.length===4?overall.reduce((a,b)=>a+b,0)/4:null;avgs.days=Object.keys(dState.scores).filter(dt=>dState.scores[dt][student]&&VIRTUES.some(v=>dState.scores[dt][student][v])).length;return avgs}
 
-function updateStudentAvg(student){const el=$('savg_'+CSS.escape(student));if(!el)return;const a=getStudentQAvg(student);if(a.overall!==null){const d=SL_D[Math.round(a.overall)];el.innerHTML='<div class="s-avg-num" style="color:'+d.c+'">'+a.overall.toFixed(1)+'</div><div class="s-avg-lbl">'+a.days+' day'+(a.days===1?'':'s')+'</div>'}else{el.innerHTML='<div class="s-avg-num" style="color:#ccc">&mdash;</div><div class="s-avg-lbl">no scores</div>'}}
+// Convert 1-5 avg to percentage: 1=50%, 5=100% (linear: pct = 37.5 + 12.5 * avg)
+function avgToPct(avg){return Math.round(37.5+12.5*avg)}
+
+function updateStudentAvg(student){const el=$('savg_'+CSS.escape(student));if(!el)return;const a=getStudentQAvg(student);if(a.overall!==null){const d=SL_D[Math.round(a.overall)];const pct=avgToPct(a.overall);el.innerHTML='<div class="s-avg-num" style="color:'+d.c+'">'+a.overall.toFixed(1)+'</div><div class="s-avg-pct" style="color:'+d.c+'">'+pct+'%</div><div class="s-avg-lbl">'+a.days+' day'+(a.days===1?'':'s')+'</div>'}else{el.innerHTML='<div class="s-avg-num" style="color:#ccc">&mdash;</div><div class="s-avg-lbl">no scores</div>'}}
 
 function updateClassAvg(){const el=$('classAvg');if(!el)return;if(!dState.roster.length){el.innerHTML='';return}let vT={D:[],A:[],C:[],I:[]};dState.roster.forEach(st=>{const a=getStudentQAvg(st);VIRTUES.forEach(v=>{if(a[v]!==null)vT[v].push(a[v])})});let h='';VIRTUES.forEach(v=>{const avg=vT[v].length?vT[v].reduce((a,b)=>a+b,0)/vT[v].length:null;const col=avg?SL_D[Math.round(avg)]?.c||'#999':'#ccc';h+='<div class="avg-item"><div class="avg-item-num" style="color:'+col+'">'+(avg!==null?avg.toFixed(1):'&mdash;')+'</div><div class="avg-item-lbl">'+V_FULL[v]+'</div></div>'});const allA=VIRTUES.map(v=>vT[v].length?vT[v].reduce((a,b)=>a+b,0)/vT[v].length:null).filter(x=>x!==null);const ov=allA.length===4?allA.reduce((a,b)=>a+b,0)/4:null;const ovC=ov?SL_D[Math.round(ov)]?.c||'#999':'#ccc';h+='<div class="avg-item"><div class="avg-item-num" style="color:'+ovC+'">'+(ov!==null?ov.toFixed(1):'&mdash;')+'</div><div class="avg-item-lbl">Overall</div></div>';el.innerHTML=h}
 
@@ -254,7 +258,7 @@ h+='<div class="card"><div class="setup-row">';h+='<input id="dTeacher" placehol
 h+='<div class="date-nav"><button onclick="shiftDate(-1)">&larr;</button><div><div class="date-label">'+fmtDate(dt)+'</div><div style="text-align:center;font-size:11px;color:#999">'+dayOfWeek(dt)+'</div></div><button onclick="shiftDate(1)">&rarr;</button><button class="btn btn-sm btn-outline" style="margin-left:8px" onclick="dState.date=todayStr();renderDaily()">T</button></div>';
 h+='<div class="card"><div class="card-hd"><span class="card-title">Students ('+dState.roster.length+')</span></div><div class="roster-add"><input id="rosterInput" placeholder="Add student name..." onkeydown="if(event.key===\'Enter\')addStudent()"><button class="btn btn-sm btn-navy" onclick="addStudent()">Add</button></div>';
 if(dState.roster.length){h+='<div class="s-row s-header" style="border-bottom:2px solid #e4e0d8;padding-bottom:6px"><div class="s-name" style="color:#999;font-family:\'DM Sans\',sans-serif;font-weight:600;font-size:11px">STUDENT</div><div class="s-virtues">';VIRTUES.forEach(v=>{h+='<div class="s-vgroup"><div class="s-v-label" style="color:'+V_COLOR[v]+'">'+V_FULL[v]+'</div></div>'});h+='</div><div class="s-avg"><div class="s-avg-lbl">Q AVG</div></div></div>';
-dState.roster.forEach(st=>{const ss=dayScores[st]||{};h+='<div class="s-row"><div class="s-name"><button class="s-rm" onclick="rmStudent(\''+esc(st.replace(/'/g,"\\'"))+'\')">&times;</button>'+esc(st)+'</div><div class="s-virtues">';VIRTUES.forEach(v=>{h+='<div class="s-vgroup"><div class="s-v-label">'+v+'</div><div class="s-vbtns">';[1,2,3,4,5].forEach(n=>{h+='<button class="vb'+(ss[v]===n?' s'+n:'')+'" data-ds="'+esc(st)+'" data-dv="'+v+'" data-dn="'+n+'" onclick="setDScore(\''+esc(st.replace(/'/g,"\\'"))+'\',\''+v+'\','+n+')">'+n+'</button>'});h+='</div></div>'});h+='</div>';const a=getStudentQAvg(st);const ac=a.overall!==null?SL_D[Math.round(a.overall)]?.c||'#999':'#ccc';h+='<div class="s-avg" id="savg_'+esc(st)+'">';if(a.overall!==null){h+='<div class="s-avg-num" style="color:'+ac+'">'+a.overall.toFixed(1)+'</div><div class="s-avg-lbl">'+a.days+' day'+(a.days===1?'':'s')+'</div>'}else{h+='<div class="s-avg-num" style="color:#ccc">&mdash;</div><div class="s-avg-lbl">no scores</div>'}h+='</div></div>'});
+dState.roster.forEach(st=>{const ss=dayScores[st]||{};h+='<div class="s-row"><div class="s-name"><button class="s-rm" onclick="rmStudent(\''+esc(st.replace(/'/g,"\\'"))+'\')">&times;</button>'+esc(st)+'</div><div class="s-virtues">';VIRTUES.forEach(v=>{h+='<div class="s-vgroup"><div class="s-v-label">'+v+'</div><div class="s-vbtns">';[1,2,3,4,5].forEach(n=>{h+='<button class="vb'+(ss[v]===n?' s'+n:'')+'" data-ds="'+esc(st)+'" data-dv="'+v+'" data-dn="'+n+'" onclick="setDScore(\''+esc(st.replace(/'/g,"\\'"))+'\',\''+v+'\','+n+')">'+n+'</button>'});h+='</div></div>'});h+='</div>';const a=getStudentQAvg(st);const ac=a.overall!==null?SL_D[Math.round(a.overall)]?.c||'#999':'#ccc';h+='<div class="s-avg" id="savg_'+esc(st)+'">';if(a.overall!==null){const pct=avgToPct(a.overall);h+='<div class="s-avg-num" style="color:'+ac+'">'+a.overall.toFixed(1)+'</div><div class="s-avg-pct" style="color:'+ac+'">'+pct+'%</div><div class="s-avg-lbl">'+a.days+' day'+(a.days===1?'':'s')+'</div>'}else{h+='<div class="s-avg-num" style="color:#ccc">&mdash;</div><div class="s-avg-lbl">no scores</div>'}h+='</div></div>'});
 h+='<div class="avg-banner" id="classAvg"></div>'}else{h+='<div style="text-align:center;padding:24px;color:#999;font-style:italic">Add students above to start tracking.</div>'}h+='</div>';
 h+='<div class="export-row"><button class="btn btn-sm btn-outline" onclick="exportCSV()">Export CSV</button><button class="btn btn-sm btn-gold" onclick="emailData()">Email My Data</button><span class="saved-note" id="syncStatus">Auto-synced to cloud</span></div>';
 $('dailyView').innerHTML=h;updateClassAvg()}
@@ -278,10 +282,24 @@ function ncc(){return nS.filter(s=>nbN(s)).length}
 function npI(s){const ov=noR(s);if(!ov)return{d:0,t:0};const t=6;let d=0;if(s.op!==null)d++;if(s.cl!==null)d++;VN.forEach(v=>{if(s["sent_"+v.k]!==null)d++});return{d,t}}
 
 function narrLoad(){
+  // Pre-populate from daily tracker if we have data
+  if(dState.roster.length>0&&(nS.length===1&&!nS[0].name)){
+    nS=[];
+    dState.roster.forEach((st,i)=>{
+      const s=nMk(i+1);
+      s.name=st;
+      const avg=getStudentQAvg(st);
+      if(avg.D!==null)s.sc_discipline=Math.round(avg.D);
+      if(avg.A!==null)s.sc_attention=Math.round(avg.A);
+      if(avg.C!==null)s.sc_charity=Math.round(avg.C);
+      if(avg.I!==null)s.sc_inquiry=Math.round(avg.I);
+      nS.push(s);
+    });
+    nci=0;
+  }
   const el=$('narrView');
   let h='';
-  // Setup bar
-  h+='<div class="sb"><div class="st-toggle" id="nsToggle"><span class="st-l" id="nsLabel">Class Setup</span><span class="st-a" id="nsArrow">&#9650; Hide</span></div><div class="sf" id="nsFields"><input id="ntIn" placeholder="Teacher Name"><input id="ncIn" placeholder="Class Name (e.g. Literature)"><select id="nqSel"><option>Q1</option><option>Q2</option><option>Q3</option><option>Q4</option></select></div></div>';
+  h+='<div class="sb"><div class="st-toggle" id="nsToggle"><span class="st-l" id="nsLabel">Class Setup</span><span class="st-a" id="nsArrow">&#9650; Hide</span></div><div class="sf" id="nsFields"><input id="ntIn" placeholder="Teacher Name" value="'+esc(dState.teacher)+'"><input id="ncIn" placeholder="Class Name (e.g. Literature)" value="'+esc(dState.cls)+'"><select id="nqSel">';['Q1','Q2','Q3','Q4'].forEach(q=>{h+='<option'+(dState.quarter===q?' selected':'')+'>'+q+'</option>'});h+='</select></div></div>';
   h+='<div class="tabs" id="ntabs"></div>';
   h+='<div class="mc"><div class="cs"><div class="sr"><input class="ni" id="nnIn" placeholder="Student Name"><div class="gb"><button class="gbn" id="nbBoy" onclick="nsetP(\'he\')">Boy</button><button class="gbn" id="nbGirl" onclick="nsetP(\'she\')">Girl</button></div></div><div class="pw" id="npW" style="display:none"><div class="pl"><span id="npT"></span><span class="cp" id="npC" style="display:none">Complete &#10003;</span></div><div class="pb"><div class="pf" id="npF"></div></div></div></div>';
   h+='<div class="cs"><div class="slab">Step 1 &mdash; Rate Each Virtue (1&ndash;5) <button class="ib" onclick="nshowAll()" title="View full rubric">?</button></div><div id="nvsA"></div></div>';
